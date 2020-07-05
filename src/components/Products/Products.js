@@ -6,9 +6,9 @@ import Product from '../Product/Product';
 function Products(props) {    
     const { products: { 
             result, 
-            loading, 
-            error 
-        }
+            loading 
+            // error 
+        }, addProductCart
     } = props;    
         
 
@@ -19,7 +19,11 @@ function Products(props) {
                 {loading || !result 
                     ? <Loading />
                     : result.map((product, idx) => (                        
-                        <Product product={product} key={idx}/>                        
+                        <Product 
+                            product={product} 
+                            key={idx}
+                            addProductCart={addProductCart}
+                        />                        
                     ))
                 }
             </Row>    

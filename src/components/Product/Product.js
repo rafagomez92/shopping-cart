@@ -3,7 +3,8 @@ import { Col, Card, Button } from 'react-bootstrap';
 import './Product.scss';
 
 function Product(props) {
-    const { name, image, extraInfo, price } = props.product;    
+    const { id, name, image, extraInfo, price } = props.product;    
+    const { addProductCart } = props;
     return(
         <Col xs={3} md={4} sm={8} className="product">
             <Card>
@@ -12,7 +13,7 @@ function Product(props) {
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{extraInfo}</Card.Text>
                     <Card.Text>{price} $ / Unidad</Card.Text>
-                    <Button>Añandir al carrito</Button>
+                    <Button onClick={() => addProductCart(id, name)}>Añandir al carrito</Button>
                 </Card.Body>
             </Card>
         </Col>
