@@ -7,8 +7,8 @@ import Products from './components/Products/Products';
 import { STORAGE_PRODUCTS_CART} from './utils/constants';
 
 function App() {
-  const [ productsCart, setProductsCart] = useState([]);
   const products = useFetch(dbProducts, null);  //Simulación de cargar la API
+  const [ productsCart, setProductsCart] = useState([]);
   //Se simula con el hook porque la página myjson.com ya no carga  
 
   useEffect(() => {
@@ -30,12 +30,13 @@ function App() {
     idsProducts.push(id);
     setProductsCart(idsProducts);
     localStorage.setItem(STORAGE_PRODUCTS_CART, productsCart);
+    getProductsCart();
     toast.success(`${name} se ha añadido al carrito correctamente`)    
   }
   
   return (
     <div className="App">
-      <TopMenu />    
+      <TopMenu products={products} productsCart={productsCart} getProductsCart={getProductsCart} />    
       <Products products={products} addProductCart={addProductCart}/>
       <ToastContainer
         position="bottom-left"

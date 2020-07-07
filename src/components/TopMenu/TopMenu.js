@@ -3,14 +3,16 @@ import { Container, Navbar } from 'react-bootstrap';
 import './TopMenu.scss'; 
 import {ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import Cart from '../Cart/Cart';
-function TopMenu() {
+
+function TopMenu(props) {
+  const { products, productsCart, getProductsCart } = props;
 
   return (
     <Navbar bg="dark" variant="dark" className="top-menu" >
         <Container>
             <BrandNav />
             {/* <MenuNav /> */}
-            <Cart />
+            <Cart products={products} productsCart={productsCart} getProductsCart={getProductsCart} />
         </Container>
     </Navbar>
   );
